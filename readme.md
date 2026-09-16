@@ -1,5 +1,5 @@
 ## This is a bee swarm macro called SpicyMacro
-### Version: v0.0.3
+### Version: v0.0.4
 
 This is my first README so like idk what to type. Since this is like only Gui right now.
 i am a single dev working on this so updates can take long but i don't say they will.
