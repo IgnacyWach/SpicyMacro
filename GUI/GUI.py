@@ -211,18 +211,127 @@ public = ctk.CTkCheckBox(
     command=switch
 )
 
-min_counter.place(x=100, y=380)
-sendscreen.place(x=100, y=350)
-testwebhook.place(x=100, y=410)
-discordlabel.place(x=140, y=290)
-serversection.place(x=140, y=170)
+min_counter.place(x=300, y=160)
+sendscreen.place(x=300, y=130)
+testwebhook.place(x=300, y=200)
+discordlabel.place(x=340, y=60)
+serversection.place(x=140, y=180)
 player.place(x=140, y=60)
-public.place(x=100, y=230)
-server.place(x=100, y=200)
-discord_webhookurl.place(x=100, y=320)
+public.place(x=100, y=250)
+server.place(x=100, y=220)
+discord_webhookurl.place(x=300, y=100)
 player_speed.place(x=100, y=100)
-hive.place(x=100, y=130)
-autore.place(x=100, y=260)
+hive.place(x=100, y=140)
+autore.place(x=100, y=280)
+
+#gathering GUI
+
+gather_label = ctk.CTkLabel(
+    gathering_frame,
+    text="Gather",
+    font=("Arial", 18, 'bold')
+)
+
+field = ctk.CTkComboBox(
+    gathering_frame,
+    values=["Dandelion Field", "Sunflower Field", "Mushroom Field", "Blue Flower Field", "Clover Field",
+    "Strawberry Field", "Spider Field", "Bamboo Field", "Pineapple Patch", "Stump Field", "Cactus Field",
+    "Pumpkin Patch", "Pine Tree Forest", "Rose Field", "Mountain Top Field", "Pepper Patch", "Coconut Field"],
+    state="readonly"
+)
+
+field.set("Dandelion Field")
+
+where_field = ctk.CTkComboBox(
+    gathering_frame,
+    values=["Center", "Upper Right Corner", "Upper Left Corner", "Lower Right Corner", "Lower Left Corner"],
+    state="readonly"
+)
+
+where_field.set("Center")
+
+pattern = ctk.CTkComboBox(
+    gathering_frame,
+    values=["Zigzag", "Circle"],
+    state="readonly"
+)
+
+pattern.set("Zigzag")
+
+gather_time = ctk.CTkComboBox(
+    gathering_frame,
+    values=("5 Minutes", "10 Minutes", "15 Minutes", "20 Minutes"),
+    state="readonly"
+)
+
+gather_time.set("5 Minutes")
+
+return_to_hive = ctk.CTkCheckBox(
+    gathering_frame,
+    text="Return To Hive"
+)
+
+active_seconds = 0
+
+is_on = False
+
+def timer():
+    global active_seconds
+
+    if is_on:
+        active_seconds += 1
+        hours = active_seconds // 3600
+        minutes = (active_seconds % 3600) // 60
+        seconds = active_seconds % 60
+        timerlabel.configure(text=f"{hours:02}:{minutes:02}:{seconds:02}")
+        main_window.after(1000, timer)
+
+def change_color():
+    global is_on, active_seconds
+
+    if is_on == False:
+        active_seconds = 0
+        timerlabel.configure(text="00:00:00")
+
+        status.configure(
+            fg_color="green",
+            hover_color="red",
+            text="Running"
+        )
+
+        is_on = True
+        timer()
+
+    else:
+        status.configure(
+            fg_color="red",
+            hover_color="green",
+            text="Click To Start"
+        )
+
+        is_on = False
+
+status = ctk.CTkRadioButton(
+    gathering_frame,
+    fg_color="red",
+    text="Click To Start",
+    hover_color="green",
+    command=change_color
+)
+
+timerlabel = ctk.CTkLabel(
+    gathering_frame,
+    text="00:00:00"
+)
+
+gather_label.place(x=140,y=60)
+field.place(x=100, y=100)
+where_field.place(x=100, y=140)
+pattern.place(x=100, y=180)
+gather_time.place(x=100, y=220)
+return_to_hive.place(x=100, y=260)
+status.place(x=25, y=500)
+timerlabel.place(x=150, y=500)
 
 #mainloop (nie tykać) / Mainloop (Dont touch)
 main_window.mainloop()
