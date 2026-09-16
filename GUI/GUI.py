@@ -1,4 +1,3 @@
-import tkinter as tk
 import customtkinter as ctk
 
 #tworzenie głównego okna / Creating main window
@@ -134,14 +133,96 @@ settings_frame_text.place(relx=0.5, rely=0.05, anchor="n")
 
 switch_tabs("Gathering")
 
-#settings frame (buttons ect ect)
+#settings frame (buttons etc etc)
+
+hive = ctk.CTkComboBox(
+    settings_frame,
+    values=["1", "2", "3", "4", "5", "6"],
+    state="readonly",
+)
+
+hive.set("Hive Slot")
+
+autore = ctk.CTkCheckBox(
+    settings_frame,
+    text="Auto Rejoin",
+)
+
+discordlabel = ctk.CTkLabel(
+    settings_frame,
+    text="Discord",
+    font=("Arial", 18, 'bold')
+)
+
+serversection = ctk.CTkLabel(
+    settings_frame,
+    text="Server",
+    font=("Arial", 18, 'bold')
+)
+
+player = ctk.CTkLabel(
+    settings_frame,
+    text="Player",
+    font=("Arial", 18, 'bold')
+)
 
 player_speed = ctk.CTkEntry(
     settings_frame,
+    placeholder_text="Player Speed"
 )
 
-player_speed.insert(0,"Player Speed")
-player_speed.place(x=100, y=200)
+discord_webhookurl = ctk.CTkEntry(
+    settings_frame,
+    placeholder_text="Webhook URL"
+)
+
+testwebhook = ctk.CTkButton(
+    settings_frame,
+    text="Test Webhook"
+)
+
+sendscreen = ctk.CTkCheckBox(
+    settings_frame,
+    text="Send Screenshots"
+)
+
+min_counter = ctk.CTkComboBox(
+    settings_frame,
+    values=["5 Minutes", "10 Minutes", "15 Minutes"],
+    state="readonly"
+)
+
+min_counter.set("5 Minutes")
+
+def switch():
+    if checkbox_var.get() == 1:
+        server.configure(state="disabled")
+    else:
+        server.configure(state="normal")
+
+checkbox_var = ctk.IntVar()
+
+server = ctk.CTkEntry(settings_frame, placeholder_text="Private Server URL")
+
+public = ctk.CTkCheckBox(
+    settings_frame, 
+    text="Public Server", 
+    variable=checkbox_var, 
+    command=switch
+)
+
+min_counter.place(x=100, y=380)
+sendscreen.place(x=100, y=350)
+testwebhook.place(x=100, y=410)
+discordlabel.place(x=140, y=290)
+serversection.place(x=140, y=170)
+player.place(x=140, y=60)
+public.place(x=100, y=230)
+server.place(x=100, y=200)
+discord_webhookurl.place(x=100, y=320)
+player_speed.place(x=100, y=100)
+hive.place(x=100, y=130)
+autore.place(x=100, y=260)
 
 #mainloop (nie tykać) / Mainloop (Dont touch)
 main_window.mainloop()
