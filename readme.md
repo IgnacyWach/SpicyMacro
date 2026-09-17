@@ -27,14 +27,11 @@ Updates 0.0.x are GUI-only updates. Real macro logic starts at 0.1.0.
 - Linux (currently only tested here)
 
 ## Installation
-
-```bash
-git clone https://github.com/your-username/SpicyMacro.git
-cd SpicyMacro
-python3 -m venv venv
-source venv/bin/activate
-pip install -r requirements.txt
-python3 main.py
+You need to type it in the terminal in the folder.
+```
+sh setup.sh
+or
+./setup.sh
 ```
 
 ## License
