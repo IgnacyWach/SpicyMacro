@@ -12,9 +12,9 @@ English isn't my first language, so apologies for any mistakes.
 
 ## Status
 
-Currently GUI-only. No macro functionality yet.
+Currently GUI-only. No macro functionality yet. 
 
-- Full GUI (Gathering, Collect/Kill, Boosts, Quests, Settings tabs)
+- GUI
 - Save/load settings (JSON)
 - First working pattern coming in v0.1.0
 - Actual macro functionality (mouse/keyboard automation) not yet implemented
