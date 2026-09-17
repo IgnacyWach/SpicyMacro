@@ -1,12 +1,44 @@
-## This is a bee swarm macro called SpicyMacro
-### Version: v0.0.4
+# SpicyMacro
+
+**Version:** v0.0.4
 
 This is my first README so like idk what to type. Since this is like only Gui right now.
 i am a single dev working on this so updates can take long but i don't say they will.
 
 i am planning to add more UI next then functionality like first patterns and all that stuff and then i will add mobs,
 boosts etc. etc
-sorry if my english isn't perfect but i'm 14 years old and english is my second language.
-have a good day.
 
-### The first working pattern will be added in update 0.1.0. Updates 0.0.x are GUI only updates.
+English isn't my first language, so apologies for any mistakes.
+
+## Status
+
+Currently GUI-only. No macro functionality yet.
+
+- Full GUI (Gathering, Collect/Kill, Boosts, Quests, Settings tabs)
+- Save/load settings (JSON)
+- First working pattern coming in v0.1.0
+- Actual macro functionality (mouse/keyboard automation) not yet implemented
+
+Updates 0.0.x are GUI-only updates. Real macro logic starts at 0.1.0.
+
+## Requirements
+
+- Python 3.x
+- Linux (currently only tested here)
+
+## Installation
+
+```bash
+git clone https://github.com/your-username/SpicyMacro.git
+cd SpicyMacro
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+python3 main.py
+```
+
+## License
+
+This project is licensed under the GNU General Public License v3.0 see the LICENSE file for details.
+
+have a good day.
