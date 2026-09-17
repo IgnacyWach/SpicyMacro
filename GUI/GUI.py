@@ -1,4 +1,5 @@
 import customtkinter as ctk
+from logic import slsettings
 
 #tworzenie głównego okna / Creating main window
 main_window = ctk.CTk()
@@ -14,6 +15,25 @@ frame_placement = {
     "x": 10, 
     "y": 60, 
 }
+
+#save settings
+
+def save_button():
+    slsettings.save(
+        hive_slot=hive.get(),
+        discord_webhookurl=discord_webhookurl.get(),
+        player_speed=player_speed.get(),
+        sendscreen=sendscreen.get(),
+        gathertime=gather_time.get(),
+        min_counter=min_counter.get(),
+        public=public.get(),
+        server=server.get(),
+        field=field.get(),
+        where_field=where_field.get(),
+        pattern=pattern.get(),
+        autore=autore.get(),
+        return_to_hive=return_to_hive.get()
+    )
 
 #Definicje / Define
 
@@ -211,6 +231,13 @@ public = ctk.CTkCheckBox(
     command=switch
 )
 
+save_settings = ctk.CTkButton(
+    settings_frame,
+    text="💾 Save Settings",
+    fg_color="green",
+    command=save_button
+)
+
 min_counter.place(x=300, y=160)
 sendscreen.place(x=300, y=130)
 testwebhook.place(x=300, y=200)
@@ -223,6 +250,8 @@ discord_webhookurl.place(x=300, y=100)
 player_speed.place(x=100, y=100)
 hive.place(x=100, y=140)
 autore.place(x=100, y=280)
+save_settings.place(x=10, y=490)
+
 
 #gathering GUI
 
@@ -332,6 +361,24 @@ gather_time.place(x=100, y=220)
 return_to_hive.place(x=100, y=260)
 status.place(x=25, y=500)
 timerlabel.place(x=150, y=500)
+
+#load settings
+
+config_data = slsettings.load()
+
+pattern.set(config_data["pattern"])
+gather_time.set(config_data["gathertime"])
+hive.set(config_data["hive_slot"])
+player_speed.set(config_data["player_speed"])
+sendscreen.set(config_data["sendscreen"])
+discord_webhookurl.set(config_data["webhook"])
+min_counter.set(config_data["min_counter"])
+public.set(config_data["public_server"])
+server.set(config_data["private_server_url"])
+field.set(config_data["field"])
+where_field.set(config_data["where_field"])
+autore.set(config_data["autorejoin"])
+return_to_hive.set(config_data["return_to_hive"])
 
 #mainloop (nie tykać) / Mainloop (Dont touch)
 main_window.mainloop()
