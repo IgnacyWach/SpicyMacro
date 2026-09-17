@@ -9,12 +9,19 @@ config_file = config_folder / "config.json"
 
 if not config_file.exists():
     default_config = {
-        "player_speed": 28,
-        "hive_slot": 1,
-        "public_server": True,
+        "player_speed": "28",
+        "hive_slot": "1",
+        "webhook": "",
+        "sendscreen": 0,
+        "gathertime": "5 Minutes",
+        "min_counter": "5 Minutes",
+        "public_server": 1,
         "private_server_url": "",
-        "auto_rejoin": True,
-        "field": "Dandelion Field"
+        "field": "Dandelion Field",
+        "where_field": "Center",
+        "pattern": "Zigzag",
+        "autorejoin": 1,
+        "return_to_hive": 1
     }
 
     with open(config_file, "w") as file:
@@ -47,4 +54,3 @@ def load():
     with open("config/config.json", "r") as file:
         settings = json.load(file)
     return(settings)
-
